@@ -1,0 +1,3 @@
+[submodule "sequence_analysis"]
+	path = sequence_analysis
+	url = https://github.com/mahasseb/sequence_analysis.git
