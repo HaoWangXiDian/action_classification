@@ -16,7 +16,7 @@ import numpy as np
 
 train_files = ['../ucf_train_test_files/trainlist01.txt', '../ucf_train_test_files/trainlist02.txt', '../ucf_train_test_files/trainlist03.txt']
 test_files = ['../ucf_train_test_files/testlist01.txt', '../ucf_train_test_files/testlist02.txt', '../ucf_train_test_files/testlist03.txt']
-
+parent_folder = '../UCF-101-Features/'
 def modify_test_files():
     class_map = {}
     class_ids = open('../ucf_train_test_files/classInd.txt')
@@ -39,7 +39,7 @@ def generate_train():
             s = line.split(' ')
             label = int(s[1].strip())
             feature_file = s[0].split('/')[1][:-4] + '.npy'
-            features = np.load(feature_file)
+            features = np.load(parent_folder + feature_file)
             print(label, features.shape)
 
 
@@ -50,7 +50,7 @@ def generate_test():
             s = line.split(' ')
             label = int(s[1].strip())
             feature_file = s[0].split('/')[1][:-4] + '.npy'
-            features = np.load(feature_file)
+            features = np.load(parent_folder + feature_file)
             print(label, features.shape)
 def main():
 #     modify_test_files()
