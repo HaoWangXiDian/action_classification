@@ -39,7 +39,7 @@ def generate_train():
         file = open(file_name, 'r')
         for line in file:
             s = line.split(' ')
-            label = int(s[1].strip())
+            label = int(s[1].strip()) - 1
             feature_file = parent_folder + s[0].split('/')[1][:-4] + '.npy'
             features = np.load(feature_file)
             step = features.shape[0] / sequence_size
@@ -62,7 +62,7 @@ def generate_test():
         file = open(file_name, 'r')
         for line in file:
             s = line.split(' ')
-            label = int(s[1].strip())
+            label = int(s[1].strip()) - 1
             feature_file = parent_folder + s[0].split('/')[1][:-4] + '.npy'
             features = np.load(feature_file)
             step = features.shape[0] / sequence_size
