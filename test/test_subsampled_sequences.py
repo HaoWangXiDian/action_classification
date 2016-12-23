@@ -14,7 +14,7 @@ import re
 
 def test_reader(FLAGS):
     
-    sequence_reader = Sequence_Reader()
+    sequence_reader = Sequence_Reader(FLAGS)
     
     reader_op = sequence_reader.get_next_training_batch(FLAGS)
     
@@ -42,7 +42,7 @@ flags = tf.app.flags
 flags.DEFINE_string("input_format", tf.float32, "input format tf.float32 or tf.float64")
 flags.DEFINE_string("data_dir", ".", "The data Directory")
 flags.DEFINE_string("train_file_range", [0, 1], "number of training files")
-flags.DEFINE_string("train_file_name_prefix", 'seq_', "number of training files")
+flags.DEFINE_string("train_file_name_prefix", 'ucf_train_', "number of training files")
 flags.DEFINE_string("train_file_name_postfix", '.bin', "number of training files")
 flags.DEFINE_integer("input_size", 2048, "Input dimensionality [4096]")
 flags.DEFINE_integer("sequence_size", 32, "Sequence_size")
