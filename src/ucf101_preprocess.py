@@ -17,7 +17,7 @@ import numpy as np
 train_files = ['../ucf_train_test_files/trainlist01.txt', '../ucf_train_test_files/trainlist02.txt', '../ucf_train_test_files/trainlist03.txt']
 test_files = ['../ucf_train_test_files/testlist01.txt', '../ucf_train_test_files/testlist02.txt', '../ucf_train_test_files/testlist03.txt']
 parent_folder = '../UCF-101-Features/'
-sequence_size = 32
+sequence_size = 32.0
 def modify_test_files():
     class_map = {}
     class_ids = open('../ucf_train_test_files/classInd.txt')
@@ -41,11 +41,18 @@ def generate_train():
             label = int(s[1].strip())
             feature_file = parent_folder + s[0].split('/')[1][:-4] + '.npy'
             features = np.load(feature_file)
-            step = features.shape[0] / sequence_size
-            subsampled_features = features[0:features.shape[0]:step]
-            print(label, subsampled_features)
+	    step = features.shape[0] / sequence_size
+	    subsampled_features = []
+            j = 0    
+	    while j * step < features.shape[0]:
+	    	subsampled_features.append(features[int(round(j * step))])
+		j += 1		
+	    if len(subsampled_features) < sequence_size:
+		subsampled_features.append(features[-1])
+	    subsampled_features = np.asanyarray(subsampled_features)
             if (subsampled_features.shape[0] < sequence_size):
                 print 'Error!!!!!!!'
+            print(subsampled_features.shape)
 
 def generate_test():
     for file_name in train_files:
