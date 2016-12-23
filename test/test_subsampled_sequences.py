@@ -41,18 +41,18 @@ flags = tf.app.flags
 
 # model parameters
 flags.DEFINE_string("input_format", tf.float64, "input format tf.float32 or tf.float64")
-flags.DEFINE_string("data_dir", ".", "The data Directory")
-flags.DEFINE_string("train_file_range", [1, 2], "number of training files")
+flags.DEFINE_string("data_dir", "../UCF-101-Features", "The data Directory")
+flags.DEFINE_string("train_file_range", [1, 28747], "number of training files")
 flags.DEFINE_string("train_file_name_prefix", 'ucf_train_', "number of training files")
 flags.DEFINE_string("train_file_name_postfix", '.bin', "number of training files")
-flags.DEFINE_string("test_file_range", [1, 2], "number of training files")
+flags.DEFINE_string("test_file_range", [1, 11213], "number of training files")
 flags.DEFINE_string("test_file_name_prefix", 'ucf_train_', "number of training files")
 flags.DEFINE_string("test_file_name_postfix", '.bin', "number of training files")
 flags.DEFINE_integer("input_size", 2048, "Input dimensionality [4096]")
 flags.DEFINE_integer("sequence_size", 32, "Sequence_size")
 
 flags.DEFINE_integer("number_layers", 2, "Number of LSTM units")
-flags.DEFINE_integer("number_hidden", 128, "Number of hidden units")
+flags.DEFINE_integer("number_hidden", 512, "Number of hidden units")
 
 flags.DEFINE_integer("output_size", 101, "Output dimensionality [2]")
 
