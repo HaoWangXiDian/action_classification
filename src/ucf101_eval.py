@@ -71,6 +71,10 @@ flags.DEFINE_string("model_path", "./models/", "Model path [./models/]")
 flags.DEFINE_string("model_prefix", "UCF101", "Model prefix [ucf101_]")
 flags.DEFINE_string("recurrent_unit", "LSTM", "Recurrent cell type [LSTM]")
 
+
+#Test time parameters
+flags.DEFINE_integer("number_of_test_examples", 1000, "number_of_test_examples")
+
 # env CUDA_VISIBLE_DEVICES=1 python main.py --train_mode=False --test_samples=./train_files.txt
 # env CUDA_VISIBLE_DEVICES=1 python main.py --train_mode=True --test_samples=./train_files.txt
 def main():
