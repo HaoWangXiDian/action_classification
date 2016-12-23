@@ -54,7 +54,7 @@ flags.DEFINE_float("MOVING_AVERAGE_DECAY", 0.9999, "MOVING_AVERAGE_DECAY")
 flags.DEFINE_integer("num_gpus", 4 , "MOVING_AVERAGE_DECAY")
 flags.DEFINE_float("per_process_gpu_memory_fraction", 0.4 , "per_process_gpu_memory_fraction")
 
-flags.DEFINE_boolean("dropout", True, "add drop out layer? [default:True]")
+flags.DEFINE_boolean("dropout", False, "add drop out layer? [default:True]")
 flags.DEFINE_float("keep_prob", 0.5, "drop-out keep prob  [default:0.5]")
 flags.DEFINE_float("stddev", 0.04, "stddev for variable initialization")
 
