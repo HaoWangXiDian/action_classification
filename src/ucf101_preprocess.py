@@ -34,6 +34,7 @@ def modify_test_files():
         file.writelines(file_content)
     
 def generate_train():
+    fIndex = 1;
     for file_name in train_files:
         file = open(file_name, 'r')
         for line in file:
@@ -53,8 +54,10 @@ def generate_train():
             if (subsampled_features.shape[0] < sequence_size):
                 print 'Error!!!!!!!'
                 print(line, subsampled_features.shape)
-            subsampled_features.tofile( parent_folder + s[0].split('/')[1][:-4] + '_train.bin')
+            subsampled_features.tofile(parent_folder + 'ucf_train' + str(fIndex) + '.bin')
+            fIndex += 1
 def generate_test():
+    fIndex = 1
     for file_name in test_files:
         file = open(file_name, 'r')
         for line in file:
@@ -74,10 +77,12 @@ def generate_test():
             if (subsampled_features.shape[0] < sequence_size):
                 print 'Error!!!!!!!'
                 print(line, subsampled_features.shape)
-            subsampled_features.tofile( parent_folder + s[0].split('/')[1][:-4] + '_test.bin')
+            subsampled_features.tofile(parent_folder + 'ucf_test' + str(fIndex) + '.bin')
+            fIndex += 1
 def main():
 #     modify_test_files()
     generate_train()
+    generate_test()
 if __name__ == "__main__":
 #   flags.FLAGS(sys.argv)
     main()
