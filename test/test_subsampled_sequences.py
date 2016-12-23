@@ -33,18 +33,19 @@ def test_reader(FLAGS):
         x, y = sess.run(reader_op)
         print y
         index += 1
+	break
 #         print (x, y)
 
 
 flags = tf.app.flags
 
 # model parameters
-flags.DEFINE_string("input_format", tf.float32, "input format tf.float32 or tf.float64")
+flags.DEFINE_string("input_format", tf.float64, "input format tf.float32 or tf.float64")
 flags.DEFINE_string("data_dir", ".", "The data Directory")
-flags.DEFINE_string("train_file_range", [0, 1], "number of training files")
+flags.DEFINE_string("train_file_range", [1, 2], "number of training files")
 flags.DEFINE_string("train_file_name_prefix", 'ucf_train_', "number of training files")
 flags.DEFINE_string("train_file_name_postfix", '.bin', "number of training files")
-flags.DEFINE_string("test_file_range", [0, 1], "number of training files")
+flags.DEFINE_string("test_file_range", [1, 2], "number of training files")
 flags.DEFINE_string("test_file_name_prefix", 'ucf_train_', "number of training files")
 flags.DEFINE_string("test_file_name_postfix", '.bin', "number of training files")
 flags.DEFINE_integer("input_size", 2048, "Input dimensionality [4096]")
