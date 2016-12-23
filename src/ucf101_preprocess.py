@@ -41,28 +41,40 @@ def generate_train():
             label = int(s[1].strip())
             feature_file = parent_folder + s[0].split('/')[1][:-4] + '.npy'
             features = np.load(feature_file)
-	    step = features.shape[0] / sequence_size
-	    subsampled_features = []
+            step = features.shape[0] / sequence_size
+            subsampled_features = []
             j = 0    
-	    while j * step < features.shape[0]:
-	    	subsampled_features.append(features[int(round(j * step))])
-		j += 1		
-	    if len(subsampled_features) < sequence_size:
-		subsampled_features.append(features[-1])
-	    subsampled_features = np.asanyarray(subsampled_features)
+            while j * step < features.shape[0]:
+                subsampled_features.append(np.append(features[int(round(j * step))], [label]))
+                j += 1		
+            if len(subsampled_features) < sequence_size:
+                subsampled_features.append(np.append(features[-1], [label]))
+            subsampled_features = np.asanyarray(subsampled_features)
             if (subsampled_features.shape[0] < sequence_size):
                 print 'Error!!!!!!!'
-            print(subsampled_features.shape)
-
+                print(line, subsampled_features.shape)
+            subsampled_features.tofile( parent_folder + s[0].split('/')[1][:-4] + '_train.bin')
 def generate_test():
-    for file_name in train_files:
+    for file_name in test_files:
         file = open(file_name, 'r')
         for line in file:
             s = line.split(' ')
             label = int(s[1].strip())
             feature_file = parent_folder + s[0].split('/')[1][:-4] + '.npy'
             features = np.load(feature_file)
-            print(label, features.shape)
+            step = features.shape[0] / sequence_size
+            subsampled_features = []
+            j = 0    
+            while j * step < features.shape[0]:
+                subsampled_features.append(np.append(features[int(round(j * step))], [label]))
+                j += 1        
+            if len(subsampled_features) < sequence_size:
+                subsampled_features.append(np.append(features[-1], [label]))
+            subsampled_features = np.asanyarray(subsampled_features)
+            if (subsampled_features.shape[0] < sequence_size):
+                print 'Error!!!!!!!'
+                print(line, subsampled_features.shape)
+            subsampled_features.tofile( parent_folder + s[0].split('/')[1][:-4] + '_test.bin')
 def main():
 #     modify_test_files()
     generate_train()
