@@ -24,10 +24,10 @@ flags = tf.app.flags
 flags.DEFINE_string("input_format", tf.float64, "input format tf.float32 or tf.float64")
 flags.DEFINE_string("data_dir", "../UCF-101-Features/", "The data Directory")
 flags.DEFINE_string("train_file_range", [0, 28747], "range of training files")
-flags.DEFINE_string("train_file_name_prefix", "../data/peat.genes.TSSAll.+100.-300_50_train_winsize100.seg", "Training Input files prefix")
+flags.DEFINE_string("train_file_name_prefix", "ucf_train", "Training Input files prefix")
 flags.DEFINE_string("train_file_name_postfix", "", "Training  Input files postfix")
 flags.DEFINE_string("test_file_range", [0, 11213], "range of test files")
-flags.DEFINE_string("test_file_name_prefix", "../data/peat.genes.TSSAll.+100.-300_50_test_winsize100.seg", "Test Input files prefix")
+flags.DEFINE_string("test_file_name_prefix", "ucf_test", "Test Input files prefix")
 flags.DEFINE_string("test_file_name_postfix", "", "Test Input files postfix")
 
 flags.DEFINE_integer("test_iterations_in_one_train_iteration", 100, "test_iterations_in_one_train_iteration")
